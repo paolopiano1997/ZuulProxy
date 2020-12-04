@@ -18,13 +18,18 @@ public class MyRule implements IRule{
 	public Server choose(Object key) {
 		List<Server> servers = lb.getAllServers();
 		Random r = new Random();
-		int rand = r.nextInt(100);
+		int rand = r.nextInt(1000)%servers.size();
 		System.out.println("Random number: " + rand);
-		if (rand<50)
+		for(Server s : servers) {
+			System.out.println("Host: " +s.getHost() + "\nPort: "+ s.getPort() + "\nHostPort: " + s.getHostPort());
+		}
+		/*if (rand<50)
 			return getServerByPort(servers,8081);
 		else if(rand>=33 && rand <66)
 			return getServerByPort(servers, 9999);
 		return getServerByPort(servers, 9092);
+		*/
+		return servers.get(rand);
 	}
 	
 	
