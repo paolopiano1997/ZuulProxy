@@ -6,6 +6,7 @@ import java.util.Random;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.Server;
+import com.netflix.loadbalancer.RoundRobinRule;
 
 
 
@@ -23,13 +24,14 @@ public class MyRule implements IRule{
 		for(Server s : servers) {
 			System.out.println("Host: " +s.getHost() + "\nPort: "+ s.getPort() + "\nHostPort: " + s.getHostPort());
 		}
-		/*if (rand<50)
-			return getServerByPort(servers,8081);
-		else if(rand>=33 && rand <66)
-			return getServerByPort(servers, 9999);
-		return getServerByPort(servers, 9092);
-		*/
+		//if (rand<50)
+		//	return getServerByPort(servers,8081);
+		//else if(rand>=33 && rand <66)
+		//	return getServerByPort(servers, 9999);
+		//return getServerByPort(servers, 9092);
+		
 		return servers.get(rand);
+		
 	}
 	
 	
